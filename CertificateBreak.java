@@ -33,17 +33,19 @@ public class CertificateBreak {
 		
 		String junkData = "";
 		
-		System.out.println("Generating file");
+		System.out.print("Generating file...");
 		
 		while(true) {
-			for(int j = 0; j < r.nextInt(10) + 10; j++) {
+			for(int j = 0; j < r.nextInt(100) + 100; j++) {
 				// generate random string, hash the string
 				junkData += (char)(r.nextInt(74) + '0');
 				fakeCert = (malicious + "#" + junkData).hashCode();
 			}
 			if(cert == fakeCert) {
+				System.out.println(" done.");
 				break;
 			}
+			junkData = "";
 		}
 		
 		String finalFile = malicious + "#" + junkData;
